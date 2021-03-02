@@ -9,6 +9,8 @@ function createStartPage() {
 }
 
 function showStartPage() {
-    mainElement.innerHTML = createStartPage()
+
+    mainElement.innerHTML = createStartPage();
+    
 }
 

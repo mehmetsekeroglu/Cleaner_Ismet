@@ -34,6 +34,7 @@ function enterTheSystem() {
 mainElement.addEventListener("click", function (event) {
     if (event.target.id === "login") {
         showCustomerPage();
+        audio.play();
     }
 })    
 }

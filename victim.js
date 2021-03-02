@@ -98,6 +98,7 @@ document.addEventListener("click", (event) => {
     if (event.target.className === "victim-info") {
         currentVictim = event.target.id
         mainElement.innerHTML = showAdressPage();
+        audioAfrican.pause();
     }
 })
 
@@ -188,10 +189,14 @@ document.addEventListener('change', (event) => {
             if (event.target.id == victims.victimName + "-check") {
                 if (event.target.checked) {
                     setStatus(event, true);
-                    showVictimPage()
+                    showVictimPage();
+                    audio.pause();
+                    audioAfrican.play();
                 } else {
                     setStatus(event, false)
-                    showVictimPage()
+                    showVictimPage();
+                    audioAfrican.pause();
+                    audio.play();
                 }
             }
         })

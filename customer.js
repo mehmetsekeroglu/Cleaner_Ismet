@@ -3,7 +3,7 @@ function createCustomerPage() {
     <section id="customer-page">
             <div id="customer-list">
                 <ul>
-                    <li class="list-header">Customer Name
+                    <li class="list-header">Customers
                         <ul>
                         ${createCustomer()}
                         </ul>
@@ -73,7 +73,8 @@ function createCustomer() {
     return addCustomer().map((customers,i) =>
         customers.map((customer, index) =>
             ` 
-            <li id="${customer.customerName}" class="customer-list-name">${i+1}.${customer.customerName}</li>
+            <li id="${customer.customerName}" class="customer-list-name">${customer.customerName} <img width=80 src="https://cdn1.iconfinder.com/data/icons/emoticon-of-avatar-woman/128/09_woman_angry_avatar_emoticon_smiley_people_user-512.png"></img></li>
+            
         `)).join("")
 }
 

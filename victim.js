@@ -15,14 +15,15 @@ function createVictimPage() {
     <section id="death-page">
             <div id="death-list">
                 <ul>
-                    <li class="list-header">Victim List</li>
+                    <li class="list-header">Victim List
                     <ul>
                     ${showVictimList()} 
                   
                     </ul>
+                    </li>
                 </ul>
             </div>
-            <div id="victim-form">
+            <div class="input-form" id="victim-form">
                 <form id="victim-form-name" class="needs-validation" novalidate>
                     <div class="input-group mb-3">
                         <input id="input-victim" type="text" class="form-control border border-dark"
@@ -38,9 +39,10 @@ function createVictimPage() {
 }
 
 function showVictimList() {
-    return getVictim().map(victims => {
+    return getVictim().victim.map(victims => {
         return `    
     <li class="victim-info" id="${victims.victimName}">${victims.victimName}
+   <img width=120 src="https://cdn0.iconfinder.com/data/icons/kameleon-free-pack/110/Man-1-256.png"></img>
    ${checkStatus(victims)} 
         </li>     
 `
@@ -61,7 +63,7 @@ function checkStatus(pVictim) {
 function getVictim() {
     let victimList = [];
     victimList = JSON.parse(localStorage.getItem(currentCustomer));
-    return victimList[0].victim;
+    return victimList[0];
 }
 
 document.addEventListener("click", (event) => {
@@ -97,20 +99,21 @@ document.addEventListener("click", (event) => {
 
 function showAdressPage() {
     return `
-    <section>
-            <div>
+    <section id="address-section">
+            <div id="address-list">
                 <ul>
-                    <li class="list-header">Victim ${currentVictim}'s Address</li>
-                    <ul>
+                    <li class="list-header">Victim ${currentVictim}'s Address
+                    <ul id="address-info">
                     ${showAdress()} 
                     </ul>
+                    </li>
                 </ul>
             </div>
             <div id="address-form">
                 <form id="address-form-name" class="needs-validation" novalidate>
                     <div class="input-group mb-3">
                         <input id="input-address" type="text" class="form-control border border-dark"
-                            placeholder="enter adress">
+                            placeholder="Enter Address">
                         <div class="input-group-append">
                             <button id="add-address" class="btn btn-dark" type="button">Save Adress</button>
                         </div>
@@ -122,9 +125,9 @@ function showAdressPage() {
 }
 
 function showAdress() {
-    return getVictimAdress().map(address => {
+    return getVictimAdress().map((address,index) => {
         return `    
-    <li class="victim-address" id="${address}">${address}
+    <li class="victim-address" id="${address}">${index+1}.${address}
         </li>
 `
     }).join("")

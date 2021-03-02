@@ -12,6 +12,7 @@ function showVictimPage() {
 
 function createVictimPage() {
     return `
+    <img width=150 src="https://cdn2.iconfinder.com/data/icons/free-color-halloween-icons/24/Layer-28-256.png"</img>
     <section id="death-page">
             <div id="death-list">
                 <ul>
@@ -42,7 +43,7 @@ function showVictimList() {
     return getVictim().victim.map(victims => {
         return `    
     <li class="victim-info" id="${victims.victimName}">${victims.victimName}
-   <img width=120 src="https://cdn0.iconfinder.com/data/icons/kameleon-free-pack/110/Man-1-256.png"></img>
+   
    ${checkStatus(victims)} 
         </li>     
 `
@@ -53,10 +54,13 @@ function showVictimList() {
 function checkStatus(pVictim) {
     if (pVictim.status) {
         return `
+        <img id="checked-img" width=120 src="https://cdn0.iconfinder.com/data/icons/kameleon-free-pack/110/Man-1-256.png"></img>
 <input type="checkbox" class="form-check-input" checked id="${pVictim.victimName}-check"/>
 `
     } else {
-        return `<input type="checkbox" class="form-check-input"  id="${pVictim.victimName}-check"/>`
+        return `
+        <img id="unchecked-img" width=120 src="https://cdn0.iconfinder.com/data/icons/kameleon-free-pack/110/Man-1-256.png"></img>
+        <input type="checkbox" class="form-check-input"  id="${pVictim.victimName}-check"/>`
     }
 }
 
@@ -180,12 +184,14 @@ function setStatus(pEvent, pStatus) {
 
 document.addEventListener('change', (event) => {
     if (event.target.className == "form-check-input") {
-        getVictim().map(victims => {
+        getVictim().victim.map(victims => {
             if (event.target.id == victims.victimName + "-check") {
                 if (event.target.checked) {
-                    setStatus(event, true)
+                    setStatus(event, true);
+                    showVictimPage()
                 } else {
                     setStatus(event, false)
+                    showVictimPage()
                 }
             }
         })

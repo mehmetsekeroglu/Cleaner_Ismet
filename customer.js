@@ -1,5 +1,6 @@
 function createCustomerPage() {
     return`
+    <img width=150 src="https://cdn2.iconfinder.com/data/icons/free-color-halloween-icons/24/Layer-28-256.png"</img>
     <section id="customer-page">
             <div id="customer-list">
                 <ul>

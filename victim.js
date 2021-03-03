@@ -1,3 +1,4 @@
+/**ismi tiklanan müsterinin kurbanlarini getiren event */
 document.addEventListener("click", (event) => {
     //event.preventDefault();
     if (event.target.className === "customer-list-name") {
@@ -5,11 +6,15 @@ document.addEventListener("click", (event) => {
         showVictimPage();
     }
 })
-
+/**
+ * Kurban listesini UI'da gösteren fonksiyon
+ */
 function showVictimPage() {
     mainElement.innerHTML = createVictimPage()
 }
-
+/**
+ * Kurban listesini ve input alaninin olusturan fonksiyon
+ */
 function createVictimPage() {
     return `
     <img width=150 src="https://cdn2.iconfinder.com/data/icons/free-color-halloween-icons/24/Layer-28-256.png"</img>
@@ -38,19 +43,23 @@ function createVictimPage() {
         </section>
    `
 }
-
+/**
+ * Locale eklenen yeni müsteriyi UI'da gösterilmek üzere olusturur
+ */
 function showVictimList() {
     return getVictim().victim.map(victims => {
         return `    
     <li class="victim-info" id="${victims.victimName}">${victims.victimName}
-   
    ${checkStatus(victims)} 
         </li>     
 `
     }).join("")
 }
 
-
+/**
+ * kurbanin temizlenip temizlenmedigini kontrol eden fonksiyon
+ * @param {*} pVictim 
+ */
 function checkStatus(pVictim) {
     if (pVictim.status) {
         return `
@@ -63,13 +72,15 @@ function checkStatus(pVictim) {
         <input type="checkbox" class="form-check-input"  id="${pVictim.victimName}-check"/>`
     }
 }
-
+/**
+ * Localdeki bilgiyi alip bir arraya atan fonksiyon
+ */
 function getVictim() {
     let victimList = [];
     victimList = JSON.parse(localStorage.getItem(currentCustomer));
     return victimList[0];
 }
-
+/**yeni kurban ekleme eventi */
 document.addEventListener("click", (event) => {
     //event.preventDefault();
     if (event.target.id === "add-victim") {
@@ -77,7 +88,9 @@ document.addEventListener("click", (event) => {
         showVictimPage();
     }
 })
-
+/**
+ * local storage'da ki müsterilere kurban ekleyerek güncelleyen fonksiyon
+ */
 function setVictimList() {
     let victimNameArea = document.querySelector("#input-victim");
     let victimList = [];
@@ -92,7 +105,7 @@ function setVictimList() {
     return victimList
 }
 
-
+/**adres sayfasini acma eventi */
 document.addEventListener("click", (event) => {
     // event.preventDefault();
     if (event.target.className === "victim-info") {
@@ -101,7 +114,9 @@ document.addEventListener("click", (event) => {
         audioAfrican.pause();
     }
 })
-
+/**
+ * adres sayfasini olusturan fonksiyon
+ */
 function showAdressPage() {
     return `
     <section id="address-section">
@@ -128,8 +143,9 @@ function showAdressPage() {
         </section>
    `
 }
-
-
+/**
+ * yeni adresi UI'da yazdirmak üzere olusturan fonksiyon
+ */
 function showAdress() {
     return getVictimAdress().map((address, index) => {
         return `    
@@ -138,11 +154,12 @@ function showAdress() {
 `
     }).join("")
 }
-
+/**
+ * local storage'da ki adresleri alip bir array'e atan fonksiyon
+ */
 function getVictimAdress() {
     let victimList = []
     victimList = JSON.parse(localStorage.getItem(currentCustomer));
-    console.log(currentVictim)
     let clickVictim = victimList[0].victim.filter(victim => {
         if (victim.victimName == currentVictim) {
             return victim
@@ -150,7 +167,7 @@ function getVictimAdress() {
     })
     return clickVictim[0].address;
 }
-
+/**yeni adres ekleme eventi */
 document.addEventListener("click", (event) => {
     //event.preventDefault();
     if (event.target.id === "add-address") {
@@ -158,7 +175,9 @@ document.addEventListener("click", (event) => {
         mainElement.innerHTML = showAdressPage();
     }
 })
-
+/**
+ * adres listesini local storge'dan alan ve yeni adres bilgisi ile güncelleyen fonksiyon
+ */
 function setVictimAddress() {
     let addressArea = document.querySelector("#input-address");
     let addressList = [];
@@ -171,7 +190,11 @@ function setVictimAddress() {
     })
     return addressList
 }
-
+/**
+ * kurbanin temizlik bilgisini localde güncelleyen fonksiyon
+ * @param {*} pEvent 
+ * @param {*} pStatus 
+ */
 function setStatus(pEvent, pStatus) {
     let customer = [];
     customer = JSON.parse(localStorage.getItem(currentCustomer));
@@ -183,7 +206,7 @@ function setStatus(pEvent, pStatus) {
     localStorage.setItem(currentCustomer, JSON.stringify(customer));
 }
 
-
+/**temizlik eventi */
 document.addEventListener('change', (event) => {
     if (event.target.className == "form-check-input") {
         getVictim().victim.map(victims => {

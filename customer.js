@@ -1,3 +1,6 @@
+/**
+ * Müsteri listesini ve input alanini olusturan fonksiyon
+ */
 function createCustomerPage() {
     return `
     <img width=150 src="https://cdn2.iconfinder.com/data/icons/free-color-halloween-icons/24/Layer-28-256.png"</img>
@@ -25,11 +28,15 @@ function createCustomerPage() {
         </section>
    `
 }
-
+/**
+ * Müsteri sayfasini UI'da gösteren fonksiyon
+ */
 function showCustomerPage() {
     mainElement.innerHTML = createCustomerPage()
 }
-
+/**
+ * sisteme giris eventi
+ */
 function enterTheSystem() {
     mainElement.addEventListener("click", function (event) {
         if (event.target.id === "login") {
@@ -38,7 +45,10 @@ function enterTheSystem() {
         }
     })
 }
-
+/**
+ * müsteri adini input alanindan alip local-storage'da müsteri listesi olusturur
+ * yeni listeyi UI'a yazdirir
+ */
 function setCustomerList() {
     let customerNameArea = document.querySelector("#input-customer");
     let customerList = [];
@@ -50,7 +60,9 @@ function setCustomerList() {
     localStorage.setItem(key, JSON.stringify(customerList));
     showCustomerPage();
 }
-
+/**
+ * yeni müsteriyi kaydetme eventi
+ */
 function addCustomerHandler() {
     mainElement.addEventListener("click", (event) => {
         //event.preventDefault();
@@ -59,9 +71,9 @@ function addCustomerHandler() {
         }
     })
 }
-
-
-
+/**
+ * Local storage daki listeyi alir ve bir array'e atar
+ */
 function addCustomer() {
     let storageCustomerList = [];
     for (let index = 0; index < localStorage.length; index++) {
@@ -70,7 +82,9 @@ function addCustomer() {
     }
     return storageCustomerList;
 }
-
+/**
+ * Locale eklenen müsteriyi UI'da gösterilmek üzere olusturur
+ */
 function createCustomer() {
     return addCustomer().map((customers, i) =>
         customers.map((customer, index) =>

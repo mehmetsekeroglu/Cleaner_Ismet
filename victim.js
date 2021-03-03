@@ -129,8 +129,9 @@ function showAdressPage() {
    `
 }
 
+
 function showAdress() {
-    return getVictimAdress().map((address,index) => {
+    return getVictimAdress().map((address, index) => {
         return `    
     <li class="victim-address" id="${address}">${index+1}.${address}
         </li>

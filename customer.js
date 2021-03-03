@@ -1,5 +1,5 @@
 function createCustomerPage() {
-    return`
+    return `
     <img width=150 src="https://cdn2.iconfinder.com/data/icons/free-color-halloween-icons/24/Layer-28-256.png"</img>
     <section id="customer-page">
             <div id="customer-list">
@@ -31,20 +31,20 @@ function showCustomerPage() {
 }
 
 function enterTheSystem() {
-mainElement.addEventListener("click", function (event) {
-    if (event.target.id === "login") {
-        showCustomerPage();
-        audio.play();
-    }
-})    
+    mainElement.addEventListener("click", function (event) {
+        if (event.target.id === "login") {
+            showCustomerPage();
+            audio.play();
+        }
+    })
 }
 
 function setCustomerList() {
     let customerNameArea = document.querySelector("#input-customer");
-    let customerList=[];
-    customerList.push({ 
-            customerName: customerNameArea.value,
-            victim: []
+    let customerList = [];
+    customerList.push({
+        customerName: customerNameArea.value,
+        victim: []
     })
     let key = customerList[0].customerName
     localStorage.setItem(key, JSON.stringify(customerList));
@@ -72,18 +72,10 @@ function addCustomer() {
 }
 
 function createCustomer() {
-    return addCustomer().map((customers,i) =>
+    return addCustomer().map((customers, i) =>
         customers.map((customer, index) =>
             ` 
             <li id="${customer.customerName}" class="customer-list-name">${customer.customerName} <img width=80 src="https://cdn1.iconfinder.com/data/icons/emoticon-of-avatar-woman/128/09_woman_angry_avatar_emoticon_smiley_people_user-512.png"></img></li>
             
         `)).join("")
 }
-
-
-
-
-
-
-
-

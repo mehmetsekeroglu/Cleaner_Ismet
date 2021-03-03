@@ -1,6 +1,7 @@
-body{
+body {
     background: linear-gradient(to top, #960101, #000000);
 }
+
 main {
     display: flex;
     flex-direction: column;
@@ -23,69 +24,77 @@ li {
     align-items: center;
     margin: 0;
     padding: 0;
-    
+
 }
-.customer-list-name{
+
+.customer-list-name {
     background-color: rgb(104, 34, 34);
     margin: 1vw;
     border-radius: 5px;
 }
 
-#start-page{
+#start-page {
     background-color: rgb(37, 8, 8);
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 5vw;
     border-radius: 5px;
-    box-shadow:black 2px 2px 2px;
+    box-shadow: black 2px 2px 2px;
 }
-h2{
-    color:brown
+
+h2 {
+    color: brown
 }
-#customer-page{
+
+#customer-page {
     display: flex;
     flex-direction: column;
-    align-items:center;
+    align-items: center;
 }
-.list-header{
+
+.list-header {
     color: burlywood;
     font-size: x-large;
     font-weight: bold;
 }
-#death-page{
+
+#death-page {
     display: flex;
     flex-direction: column;
-    align-items:center;
+    align-items: center;
 }
-.input-form{
+
+.input-form {
     margin-top: 2vh;
 }
-.victim-info{
+
+.victim-info {
     background-color: rgb(22, 82, 35);
     margin: 1vw;
-    border-radius: 5px; 
+    border-radius: 5px;
     padding: 1vh;
 }
 
-#address-section{
+#address-section {
     display: flex;
     flex-direction: column;
-    align-items:center;   
-}
-#address-list{
-    background-color: rgb(95, 79, 238);
-    margin: 1vw;
-    border-radius: 5px; 
-    padding: 1vh; 
+    align-items: center;
 }
 
-#address-info{
+#address-list {
+    background-color: rgb(95, 79, 238);
+    margin: 1vw;
+    border-radius: 5px;
+    padding: 1vh;
+}
+
+#address-info {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
 }
 
-#checked-img{
-        opacity: 0.5;
+#checked-img {
+    opacity: 0.5;
 }
